@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>navigation</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<style>
+body {
+/* background-image: url('digital.jpg');
+  background-size:auto; */
+}
+
+div.b{
+  /*width:50px;
+  word-wrap:break-word;*/
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text{
+            color: white;
+        }
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+ <ul class="navbar-nav"/>
+ 	<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+	<li class="nav-item"><a class="nav-link" href="videoArt.html">Video Art</a></li>
+	<li class="nav-item"><a class="nav-link" href="Images.html">Digital Images</a></li>
+  <li class="nav-item"><a class="nav-link" href="Websites.html">Website Projects</a></li>
+	<li class="nav-item"><a class="nav-link" href="Games.html">Games</a></li>
+  <li class="nav-item"><a class="nav-link" href="Extra.html">Extra</a></li>
+</ul>
+</nav>
+<div class="container-fluid">
+<center>
+  <br><br>
+<h1 style="font-size:80px"> p5.js Games </h1>
+
+<br><br><br>
+
+<h2 style="font-size:40px"> Fireflie Expedition</h2>
+<iframe src="fireflyGame/index.html" height="605" width="605"> </iframe>
+<p>In the middle of the night, a child decides to take money from his parents to buy a jar so they could catch fireflies.<br>
+  However, he wasn't expecting to the surprise he got when he returned home.
+
+<br><br><br>
+<!--Start of code used in firefly game
+<p>
+var img;<br>
+var ballx = 300;<br>
+var bally = 300;<br>
+var ballSize = 40;<br>
+var score = 0;<br>
+var gameState = "L1";<br>
+<br>
+function preload(){<br>
+  back1 = loadImage("https://toasttoasttoast.github.io/art74/games/bedroom.png");<br>
+  money = loadImage("https://toasttoasttoast.github.io/art74/games/money.png");<br>
+  back2 = loadImage("https://toasttoasttoast.github.io/art74/games/shelves.png");<br>
+  jar = loadImage("https://toasttoasttoast.github.io/art74/games/jar.png");<br>
+  back3 = loadImage("https://toasttoasttoast.github.io/art74/games/forest.png");<br>
+  firefly = loadImage("https://toasttoasttoast.github.io/art74/games/firefly.png");<br>
+  back4 = loadImage("https://toasttoasttoast.github.io/art74/games/parent.png");<br>
+  sorry = loadImage("https://toasttoasttoast.github.io/art74/games/sorry.png");<br>
+  back5 = loadImage("https://toasttoasttoast.github.io/art74/games/foregiven.png");<br>
+<br>
+}<br>
+<br>
+function setup() {<br>
+  createCanvas(600,600);<br>
+  textAlign(CENTER);<br>
+  textSize(25);<br>
+  fill(225,225,225);<br>
+}//end of setup<br>
+<br>
+<br>
+function draw() {<br>
+<br>
+  if(gameState == "L1"){<br>
+  levelOne();<br>
+  }<br>
+  if(gameState == "L2"){<br>
+    levelTwo();<br>
+  }<br>
+  if(gameState == "L3"){<br>
+    levelThree();<br>
+  }<br>
+  if(gameState == "L4"){<br>
+    levelFour();<br>
+  }<br>
+<br>
+  text(("Score: " + score),width/2,40);<br>
+<br>
+}//end of draw<br>
+<br>
+function levelOne(){<br>
+  background(back1);<br>
+  text("Steal parents money", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 10){<br>
+    gameState = "L2";<br>
+  }<br>
+  image(money, ballx-20, bally-20);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level 1<br>
+<br>
+function levelTwo(){<br>
+  background(back2);<br>
+  text("buy some jars", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >=20){<br>
+    gameState = "L3";<br>
+  }<br>
+  image(jar, ballx-50, bally-50);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level 2<br>
+<br>
+<br>
+function levelThree(){<br>
+  background(back3);<br>
+  text("catch fireflies", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 30){<br>
+    gameState = "L4";<br>
+  }<br>
+<br>
+  image(firefly, ballx-20, bally-20);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level 3<br>
+<br>
+<br>
+<br>
+function levelFour(){<br>
+  background(back4);<br>
+  text("apologize", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+<br>
+  image(sorry, ballx-50, bally-50);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level 4<br>
+</p>
+-->
+<!--End of code for firefly game -->
+
+<h2 style="font-size:45px"> The WildLife </h2>
+ <iframe src="winterGame/index.html" height="605" width="805"></iframe>
+<p> In the snowy winter forest, a pack of wolves are doing there daily hunting routine. <br>
+  When you return from catching a rabbit, one of the pack is found dead!<br>
+  They all claim that it is you and the only option is to prove your innocence. <br>
+  Will you be falsely accused and executed for murder or will you find the true murderer?</p>
+
+</center>
+
+<br><br><br><br><br><br><br>
+
+</div>
+</body></html>
