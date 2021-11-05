@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>navigation</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<style>
+body {
+/* background-image: url('digital.jpg');
+  background-size:auto; */
+}
+
+div.b{
+  /*width:50px;
+  word-wrap:break-word;*/
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text{
+            color: white;
+        }
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+ <ul class="navbar-nav"/>
+ <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+ <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+ <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+</ul>
+</nav>
+<div class="container-fluid">
+<center>
+<br><br><br>
+
+<a href="Games.html" > <h4> Go Back </h4> </a>
+<br><br><br><br>
+<p>var img; <br>
+var ballx = 400;<br>
+var bally = 300;<br>
+//boss var<br>
+var ball2x = 200;<br>
+var ball2y = 100;<br>
+var ball3x = 600;<br>
+var ball3y = 300;<br>
+//<br>
+var ballSize = 40;<br>
+var score = 0;<br>
+var gameState = "L1";<br>
+var pageNumber = 0;<br>
+var timer = 20; //timer for racing game<br>
+var timerW = 20; //Willows sound test<br>
+var timerT = 25; //Titan's Test<br>
+var timerM = 30; //Moon's test<br>
+var timerB = 50; //Boss timer<br>
+
+function preload(){<br>
+  backStart = loadImage("https://toasttoasttoast.github.io/art74/fgame/Start.png");<br>
+  backpg1 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg1.png");<br>
+  backBreezeIntro = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg2.png");<br>
+  backMoonIntro = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg3.png");<br>
+  backBruceIntro = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg4.png");<br>
+  backWillowIntro = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg5.png");<br>
+  backTitanIntro = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg6.png");<br>
+  backpg7 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg7.png");<br>
+  backpg8 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg8.png");<br><br>
+  backpg9 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg9.png");<br>
+  backpg10 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg10.png");<br>
+  backpg11 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg11.png");<br>
+  backpg12 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg12.png");<br>
+  backpg13 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg13.png");<br>
+  backpg14 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg14.png");<br>
+  backpg15 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg15.png");<br>
+  backpg151 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg15_1.png");<br>
+  backpg16 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg16.png");<br>
+  backpg17 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg17.png");<br>
+  backpg18 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg18.png");<br>
+  backpg19 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg19.png");<br>
+  backpg20 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg20.png");<br>
+  backpg21 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg21.png");<br>
+  backpg22 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg22.png");<br>
+  backpg23 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg23.png");<br>
+  backpg24 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg24.png");<br>
+  backpg25 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg25.png");<br>
+  backpg26 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg26.png");<br>
+  backpg27 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg27.png");<br>
+  backpg28 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg28.png");<br>
+  backpg29 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg29.png");<br>
+  backpg30 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg30.png");<br>
+  backpg31 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg31.png");<br>
+  backpg32 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg32.png");<br>
+  backpg33 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg33.png");<br>
+  backpg34 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg34.png");<br>
+  backpg35 = loadImage("https://toasttoasttoast.github.io/art74/fgame/backpg35.png");<br>
+
+
+  //animals<br>
+  bunnyFace = loadImage("https://toasttoasttoast.github.io/art74/fgame/bunny.png");<br>
+  wolfu = loadImage("https://toasttoasttoast.github.io/art74/fgame/wolfu.png");<br>
+  breeze = loadImage("https://toasttoasttoast.github.io/art74/fgame/wolf1.png");<br>
+
+  //elements<br>
+  snowflake = loadImage("https://toasttoasttoast.github.io/art74/fgame/snowflake.png");<br>
+  soundwave = loadImage("https://toasttoasttoast.github.io/art74/fgame/sound.png");<br>
+  chicken = loadImage("https://toasttoasttoast.github.io/art74/fgame/chicken.png");<br>
+  bearprint = loadImage("https://toasttoasttoast.github.io/art74/fgame/bear.png");<br>
+  jaw = loadImage("https://toasttoasttoast.github.io/art74/fgame/jaw.png");<br>
+  apple = loadImage("https://toasttoasttoast.github.io/art74/fgame/apple.png");<br>
+  muffin = loadImage("https://toasttoasttoast.github.io/art74/fgame/muffin.png");<br>
+
+}<br>
+
+function setup() {<br>
+  createCanvas(800,600);<br>
+  textAlign(CENTER);<br>
+  textSize(25);<br>
+  fill(0, 0, 0);<br>
+  setInterval(timeIt,1000);<br>
+
+  restart = createButton('restart');<br>
+  restart.position(0,577);<br>
+  restart.mousePressed(begin);<br>
+
+  redolvl = createButton('Back 1 pg.');<br>
+  redolvl.position(50,577);<br>
+  redolvl.mousePressed(redo);<br>
+}//end of setup<br>
+
+
+function draw() {<br>
+
+  if(pageNumber == 0){<br>
+
+    background(backStart);<br>
+  }<br>
+  if(pageNumber == 1){<br>
+  background(backpg1);<br>
+  }<br>
+  if(pageNumber == 2){<br>
+  background(backBreezeIntro);<br>
+  }<br>
+   if(pageNumber == 3){<br>
+  background(backMoonIntro);<br>
+  }<br>
+   if(pageNumber ==4){<br>
+  background(backBruceIntro);<br>
+  }<br>
+   if(pageNumber == 5){<br>
+  background(backWillowIntro);<br>
+  }<br>
+   if(pageNumber == 6){<br>
+  background(backTitanIntro);<br>
+  }<br>
+   if(pageNumber == 7){<br>
+  background(backpg7);<br>
+  }<br>
+   if(pageNumber == 8){<br>
+     levelOne();<br>
+    text(("Score: " + score),width-50,590);<br>
+  }<br>
+   if(pageNumber == 9){<br>
+  background(backpg9);<br>
+  }<br>
+   if(pageNumber == 10){<br>
+  background(backpg10);<br>
+  }<br>
+   if(pageNumber == 11){<br>
+  background(backpg11);<br>
+  }<br>
+   if(pageNumber == 12){<br>
+  background(backpg12);<br>
+  }<br>
+    if(pageNumber == 13){<br>
+  background(backpg13);<br>
+  }<br>
+    if(pageNumber == 14){  //the decisions 4<br>
+  background(backpg14);<br>
+  }<br>
+    if(pageNumber == 15){  //the race screen<br>
+    levelRace();<br>
+    text(("Score: " + score),width-50,590);<br>
+    text(timer, 760, 40);<br>
+  }<br>
+  if(pageNumber == 16){  // race lose<br>
+  background(backpg17);<br>
+  reset();<br>
+  }<br>
+ if(pageNumber == 17){   // race win<br>
+  background(backpg16);<br>
+reset();<br>
+  }<br>
+  if(pageNumber == 18){<br>
+  background(backpg18);<br>
+  score = 0;<br>
+  }<br>
+  if(pageNumber == 19){<br>
+    levelWillow();<br>
+    text(("Score: " + score),width-50,590);<br>
+    text(timerW, 760, 40);<br>
+  }<br>
+  if(pageNumber == 20){  // willow lose<br>
+  background(backpg20);<br>
+  reset();<br>
+  }<br>
+  if(pageNumber == 21){  // willow win<br>
+  background(backpg21);<br>
+  reset();<br>
+  }<br>
+  if(pageNumber == 22){<br>
+  background(backpg22);<br>
+  score = 0;<br>
+  }<br>
+   if(pageNumber == 23){<br>
+  levelTitan();<br>
+  fill(225,225,225);<br>
+  text(("Score: " + score),width-50,590);<br>
+  text(timerT, 760, 40);<br>
+  }<br>
+   if(pageNumber == 24){ // titan lose<br>
+  background(backpg24);<br>
+  reset();<br>
+  }<br>
+   if(pageNumber == 25){ // titan win<br>
+  background(backpg25);<br>
+  reset();<br>
+  }<br>
+   if(pageNumber == 26){<br>
+  background(backpg26);<br>
+ score = 0;<br>
+  }<br>
+   if(pageNumber == 27){<br>
+  levelMoon();<br>
+  text(("Score: " + score),width-50,590);<br>
+  text(timerM, 760, 40);<br>
+  }<br>
+   if(pageNumber == 28){ //Moon lose<br>
+  background(backpg28);<br>
+  reset();<br>
+  }<br>
+     if(pageNumber == 29){ // Moon win<br>
+  background(backpg29);<br>
+  reset();<br>
+  }<br>
+     if(pageNumber == 30){<br>
+  background(backpg30);<br>
+  score = 0;<br>
+  }<br>
+     if(pageNumber == 31){<br>
+  background(backpg31);<br>
+  }<br>
+     if(pageNumber == 32){<br>
+  bossBattle();<br>
+   text(("Score: " + score),width-50,590);<br>
+  text(timerB, 760, 40);<br>
+  }<br>
+  if(pageNumber ==33){ //boss loss<br>
+    background(backpg33);<br>
+    reset();<br>
+  }<br>
+  if(pageNumber == 34){ //boss win<br>
+    background(backpg34);<br>
+    reset();<br>
+  }<br>
+  if(pageNumber == 35){<br>
+    background(backpg35);<br>
+  }<br>
+
+
+
+}//end of draw<br>
+
+function keyPressed(){<br>
+  if(keyCode === RIGHT_ARROW){<br>
+
+    pageNumber = pageNumber + 1;<br>
+  }<br>
+  if(keyCode === LEFT_ARROW){<br>
+    if(pageNumber >= 0){<br>
+    pageNumber = pageNumber - 1;<br>
+    }<br>
+  }<br>
+  return false;<br>
+}//end of keyPressed<br>
+
+function begin(){<br>
+  pageNumber = 0;<br>
+  timer = 20;<br>
+  timerW = 20;<br>
+  timerT = 25;<br>
+  timerM = 30;<br>
+  timerB = 50;<br>
+  score = 0;<br>
+}<br>
+
+function redo(){<br>
+  timer = 10;<br>
+  timerW = 20;<br>
+  timerT = 25;<br>
+  timerM = 30;<br>
+  score = 0;<br>
+  timerB = 50;<br>
+  pageNumber--;<br>
+}<br>
+
+function reset(){<br>
+  timer = 10;<br>
+  timerW = 20;<br>
+  timerT = 25;<br>
+  timerM = 30;<br>
+  score = 0;<br>
+  timerB = 50;<br>
+}<br>
+
+
+function levelOne(){<br>
+
+  background(backpg8);<br>
+  text("Catch the rabbits", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 10){<br>
+    pageNumber = 9;<br>
+  }<br>
+  image(bunnyFace, ballx-23, bally-23);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level 1<br>
+
+function startRace(){<br>
+  pageNumber = pageNumber + 1;<br>
+}<br>
+
+/*function levelRace(){<br>
+  wolfuPosX=10;<br>
+  breezePosX=10;<br>
+  image(wolfu,wolfuPosX,580);<br>
+  image(breeze,breezePosX,560);<br>
+  setInterval(function(){breezePosX = breezePosX + 10;},1000);<br>
+
+  numP = random(10);<br>
+  if(keyPressed() == numP){<br>
+    wolfuPosX=10;<br>
+    numP = random(10);<br>
+  }<br>
+  text(numP, width/2, 20);<br>
+
+  if(breezePosX >= 750){<br>
+    pageNumber = 17;<br>
+  }<br>
+  if(wolfuPosX >= 750){<br>
+    pageNumber = 16;<br>
+  }<br>
+}//end of level race<br>
+*/<br>
+
+function levelRace(){<br>
+
+  background(backpg15);<br>
+  text("Grab Snowflakes Quicker Than Breeze", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 10){<br>
+    pageNumber = 17;<br>
+  }<br>
+  if(timer == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  image(snowflake, ballx-20, bally-20);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level Race<br>
+
+function timeIt(){<br>
+  //breeze's timer<br>
+  if(timer > 0 && pageNumber == 15){<br>
+    timer--;<br>
+  }<br>
+   if(timer == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  //willows timer<br>
+  if(timerW > 0 && pageNumber==19){<br>
+    timerW--;<br>
+  }<br>
+  if(timerW == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  //Titan's Timer<br>
+  if(timerT > 0 && pageNumber == 23){<br>
+    timerT--;<br>
+  }<br><br>
+  if(timerT == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  //Moon's Timer<br>
+  if(timerM > 0 && pageNumber == 27){<br>
+    timerM--;<br>
+  }<br>
+  if(timerM == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  //Bears Timer<br>
+  if(timerB > 0 && pageNumber == 32){<br>
+    timerB--;<br>
+  }<br>
+  if(timerB == 0){<br>
+    pageNumber++;<br>
+  }<br>
+}<br>
+
+function levelWillow(){<br>
+  background(backpg19);<br>
+  text("Catch the hidden animal sounds", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 15){<br>
+    pageNumber = 21;<br>
+  }<br>
+  if(timerW == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  image(soundwave, ballx-30, bally-30);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level Willow<br>
+
+function levelTitan(){<br>
+  fill(252, 186, 3);<br>
+  background(backpg23);<br>
+  text("Slay the deer for food", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 25){<br>
+    pageNumber = 25;<br>
+  }<br>
+  if(timerT == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  image(chicken, ballx-20, bally-20);<br>
+  ellipse(ballx, bally, 1, 1);<br>
+} //end of level Titan<br>
+
+function levelMoon(){<br>
+  fill(0,0,0);<br>
+  background(backpg27);<br>
+  text("Sniff out the tracks", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 1;<br>
+  }<br>
+  if(score >= 38){<br>
+    pageNumber = 29;<br>
+  }<br>
+  if(timerM == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  image(bearprint, ballx-30, bally-30);<br>
+  ellipse(ballx, bally, 2, 2);<br>
+} //end of level Moon<br>
+
+function bossBattle(){<br>
+  background(backpg32);<br>
+  text("Get the jaws, avoid biting the food", width/2, height-20);<br>
+  var distToBall = dist(ballx, bally, mouseX, mouseY);<br>
+  var distToBall2 = dist(ball2x, ball2y, mouseX, mouseY);<br>
+  var distToBall3 = dist(ball3x, ball3y, mouseX, mouseY);<br>
+  if(distToBall < ballSize/2){<br>
+    ballx = random(width);<br>
+    bally = random(height);<br>
+    score = score + 2;<br>
+  }<br>
+  if(distToBall2 < ballSize/2){<br>
+    ball2x = random(width);<br>
+    ball2y = random(height);<br>
+    score = score - 1;<br>
+  }<br>
+  if(distToBall3 < ballSize/2){<br>
+    ball3x = random(width);<br>
+    ball3y = random(height);<br>
+    score = score - 1;<br>
+  }<br>
+  if(score >= 28){<br>
+    pageNumber = 34;<br>
+  }<br>
+  if(timerB == 0){<br>
+    pageNumber++;<br>
+  }<br>
+  image(jaw, ballx-30, bally-30);<br>
+  image(apple, ball2x-30, ball2y-30);<br>
+  image(muffin, ball3x-30, ball3y-30);<br>
+  ellipse(ballx, bally, 2, 2);<br>
+  ellipse(ball2x, ball2y, 2, 2);<br>
+  ellipse(ball3x, ball3y, 2, 2);<br>
+} //end of level boss<br>
+</p>
+
+</center>
+
+<br><br><br><br><br><br><br>
+
+</div>
+</body></html>
